@@ -23,12 +23,12 @@ app.get("/api/files", (req, res) => {
 
     // Filtrar solo las columnas necesarias
     const filteredData = data.map(row => ({
-      Nombre_Documento: row["OPERATIVAS[Nombre Documento]"],
-      Grupo: row["OPERATIVAS[Grupo SOAP]"],
-      Equipo: row["OPERATIVAS[Equipo SOAP]"],
-      Tipo_Documento: row["OPERATIVAS[Tipo Documento SOAP]"],
-      Equipo_Mesa_Agil: row["OPERATIVAS[Equipo Mesa Ágil SOAP]"],
-      Ruta_archivo: row["OPERATIVAS[Ruta archivo]"],
+      Nombre_Documento: row["Nombre Documento"],
+      Grupo: row["Grupo SOAP"],
+      Equipo: row["Equipo SOAP"],
+      Tipo_Documento: row["Tipo Documento SOAP"],
+      Equipo_Mesa_Agil: row["Equipo Mesa Ágil SOAP"],
+      Ruta_archivo: row["Ruta archivo"],
     }));
 
     res.json(filteredData);

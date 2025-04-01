@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const Papa = require("papaparse");
+require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+PORT = process.env.PORT
 
 app.use(cors());
 app.use(express.json());
@@ -12,7 +13,7 @@ app.use(express.json());
 // Endpoint para leer el archivo CSV
 app.get("/api/files", (req, res) => {
   try {
-    const filePath = "./info.csv"; // Ruta al archivo CSV
+    const filePath = "./data.csv"; // Ruta al archivo CSV
     const fileContent = fs.readFileSync(filePath, "utf8");
 
     // Parsear CSV a JSON
@@ -23,12 +24,12 @@ app.get("/api/files", (req, res) => {
 
     // Filtrar solo las columnas necesarias
     const filteredData = data.map(row => ({
-      Nombre_Documento: row["Nombre Documento"],
-      Grupo: row["Grupo SOAP"],
-      Equipo: row["Equipo SOAP"],
-      Tipo_Documento: row["Tipo Documento SOAP"],
-      Equipo_Mesa_Agil: row["Equipo Mesa Ágil SOAP"],
-      Ruta_archivo: row["Ruta archivo"],
+      Nombre_Documento: row["OPERATIVAS[Nombre Documento]"],
+      Grupo: row["OPERATIVAS[Grupo SOAP]"],
+      Equipo: row["OPERATIVAS[Equipo SOAP]"],
+      Tipo_Documento: row["OPERATIVAS[Tipo Documento SOAP]"],
+      Equipo_Mesa_Agil: row["OPERATIVAS[Equipo Mesa Ágil SOAP]"],
+      Ruta_archivo: row["OPERATIVAS[Ruta archivo]"],
     }));
 
     res.json(filteredData);

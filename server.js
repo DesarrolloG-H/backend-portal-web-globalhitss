@@ -15,7 +15,7 @@ let cachedData = [];
 
 // Configurar CORS para permitir solicitudes desde tu frontend
 const corsOptions = {
-  origin: 'http://10.172.202.89:5174',  // Permite solicitudes solo desde esta URL
+  origin: 'http://10.172.202.89:5173',  // Permite solicitudes solo desde esta URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 };

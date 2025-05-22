@@ -13,4 +13,11 @@ router.get('/plataformas', incidenciaController.getPlataformas);
 router.get('/torres', incidenciaController.getTorres);
 router.get('/analistas', incidenciaController.getAnalistas);
 
+// Rutas para POST
+router.post('/formulario', incidenciaController.crearIncidencia);
+
+router.get('/todo', incidenciaController.obtenerIncidencias);
+router.get('/data-cargada', incidenciaController.getIncidenciasFormateadas)
+
+
 module.exports = router;

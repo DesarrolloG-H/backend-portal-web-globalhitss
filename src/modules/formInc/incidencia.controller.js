@@ -1,5 +1,6 @@
 const incidenciaService = require('./incidencia.service');
-const response = require('../../utils/repsonse');
+const response = require('../../utils/response');
+const formatearIncidencias = require('../formInc/utils/formatearIncidencias')
 
 // Reutilizable para tablas simples
 const getSimpleTable = (tableName, label) => async (req, res, next) => {
@@ -44,3 +45,39 @@ exports.getTiposTransaccion = async (req, res) => {
     response.error(res, err);
   }
 };
+
+
+exports.crearIncidencia = async (req, res) => {
+  try {
+    const payload = req.body;
+    // console.log('📥 Payload recibido en backend:', JSON.stringify(payload, null, 2));
+    const result = await incidenciaService.insertarIncidencia(payload);
+    response.ok(res, result, 'Incidencia creada correctamente');
+  } catch (err) {
+    console.error('❌ Error en crearIncidencia:', err); // 👈 Asegúrate de imprimir esto
+    response.error(res, err);
+  }
+};
+
+
+exports.obtenerIncidencias = async (req, res) => {
+  try {
+    const data = await incidenciaService.obtenerIncidenciasConTodo();
+    response.ok(res, data, 'Incidencias obtenidas correctamente');
+  } catch (err) {
+    response.error(res, err);
+  }
+};
+
+
+
+exports.getIncidenciasFormateadas = async (req, res) => {
+  try {
+    const rows = await incidenciaService.obtenerIncidenciasParaFrontend()
+    const resultado = formatearIncidencias(rows)
+    response.ok(res, resultado, 'Incidencias obtenidas correctamente')
+  } catch (err) {
+    console.error('Error en getIncidenciasFormateadas:', err)
+    response.error(res, err)
+  }
+}

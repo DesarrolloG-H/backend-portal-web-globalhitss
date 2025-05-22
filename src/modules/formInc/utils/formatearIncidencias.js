@@ -9,7 +9,7 @@ function formatearIncidencias(rows) {
         incidenciaId: row.incidencia_id,
         datosGenerales: {
           fecha: row.fecha,
-          semana: null, // podrías calcularla en backend si lo deseas
+          semana: row.semana, // podrías calcularla en backend si lo deseas
           ticket: row.ticket,
           tipoAfectacion: row.tipo_afectacion,
           resumen: row.resumen,

@@ -199,6 +199,7 @@ const obtenerIncidenciasConTodo = async () => {
     SELECT 
       i.id AS incidencia_id,
       i.fecha,
+      i.semana,
       i.ticket,
       ta.nombre AS tipo_afectacion,
       i.resumen,
@@ -274,6 +275,7 @@ const obtenerIncidenciasParaFrontend = async () => {
   SELECT 
     i.id AS incidencia_id,
     i.fecha,
+    i.semana,
     i.ticket,
     ta.nombre AS tipo_afectacion,
     i.resumen,
